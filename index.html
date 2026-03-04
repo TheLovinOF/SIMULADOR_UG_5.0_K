@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simulacro • Bloque 1 • 40 preguntas • 60 min</title>
+
+    <!-- Forzar siempre conexión segura HTTPS -->
+    <script>
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            location.replace('https:' + location.href.substring(location.protocol.length));
+        }
+    </script>
+
+    <!-- Seguridad básica y forzado de recursos seguros -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests;">
+    <meta name="referrer" content="no-referrer">
+
+    <style>
+        :root {
+            --bg1: #f6fbff;
+            --bg2: #e9f6ff;
+            --card: #ffffff;
+            --text: #0b2440;
+            --muted: #4a6a86;
+            --line: #cfe7f6;
+            --accent: #2aa8ff;
+            --accent2: #7fd3ff;
+            --good: #11a36a;
+            --bad: #d94141;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .06);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+            color: var(--text);
+            background: radial-gradient(1200px 600px at 20% 0%, var(--bg2), var(--bg1));
+        }
+
+        .wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 18px;
+            padding-bottom: 78px;
+        }
+
+        .top {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, .92);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            min-width: 320px;
+        }
+
+        .brand img {
+            width: 54px;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: #fff;
+        }
+
+        .title {
+            font-weight: 900;
+            letter-spacing: .2px;
+        }
+
+        .sub {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 2px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .pill {
+            padding: 8px 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--muted);
+            background: #f7fcff;
+            font-size: 13px;
+        }
+
+        .timer {
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .btn {
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, #ffffff, #f3fbff);
+            padding: 10px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 800;
+            color: var(--text);
+            box-shadow: 0 6px 16px rgba(42, 168, 255, .08);
+        }
+
+        .btn:hover {
+            border-color: #b8def4;
+        }
+
+        .btn.primary {
+            border-color: #bfe7ff;
+            background: linear-gradient(180deg, #e8f7ff, #dff3ff);
+        }
+
+        .btn.danger {
+            border-color: #ffd1d1;
+            background: linear-gradient(180deg, #fff5f5, #ffecec);
+            color: #8a1d1d;
+        }
+
+        .btn:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+        }
+
+        .card {
+            margin-top: 14px;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .progressbar {
+            height: 10px;
+            background: #eef7ff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 12px 0 4px;
+        }
+
+        .progressbar>div {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: 999px;
+            transition: width .25s ease;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .qhead {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .qnum {
+            font-weight: 1000;
+            color: var(--accent);
+            min-width: 72px;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #f7fcff;
+            white-space: nowrap;
+        }
+
+        .qtext {
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 1.25;
+            margin: 6px 0 0;
+        }
+
+        .opts {
+            display: grid;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .opt {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #f7fcff;
+            cursor: pointer;
+            transition: transform .06s ease, border-color .2s ease, background .2s ease;
+            user-select: none;
+        }
+
+        .opt:hover {
+            border-color: #b8def4;
+        }
+
+        .opt:active {
+            transform: scale(.997);
+        }
+
+        .opt input {
+            margin-top: 3px;
+            transform: scale(1.15);
+        }
+
+        .opt.locked {
+            cursor: not-allowed;
+            opacity: .75;
+        }
+
+        .notice {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border: 1px dashed var(--line);
+            border-radius: 16px;
+            background: #fbfeff;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .stat {
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #fbfeff;
+        }
+
+        .big {
+            font-size: 28px;
+            font-weight: 1000;
+        }
+
+        .good {
+            color: var(--good);
+        }
+
+        .bad {
+            color: var(--bad);
+        }
+
+        .field {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .input {
+            padding: 12px 12px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: #fff;
+            font-size: 16px;
+            width: 240px;
+        }
+
+        .calc {
+            margin-top: 10px;
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #f7fcff;
+            color: var(--muted);
+            line-height: 1.35;
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        .watermark {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(11, 36, 64, .45);
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="top">
+            <div class="brand">
+                <img alt="UG logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6d/LogoUGcolor.png" />
+                <div>
+                    <div class="title">Simulacro • Bloque 1 • 40 preguntas • 60 minutos</div>
+                    <div class="sub">Una por una • sin retroceder • respuesta bloqueada • 40 aleatorias de un banco
+                        grande (temas del documento)</div>
+                </div>
+            </div>
+
+            <div class="meta">
+                <div class="pill">Tiempo: <span class="timer" id="timer">60:00</span></div>
+                <div class="pill">Progreso: <span id="prog">0</span>/40</div>
+                <button class="btn primary" id="startBtn">Iniciar</button>
+                <button class="btn danger" id="finishBtn" disabled>Finalizar</button>
+                <button class="btn" id="resetBtn">Reiniciar</button>
+            </div>
+        </div>
+
+        <div class="card" id="quizCard">
+            <div class="progressbar">
+                <div id="bar"></div>
+            </div>
+            <div class="muted" id="hint" style="font-size:13px;">
+                Presiona “Iniciar”. Cada reinicio crea un examen nuevo con 40 preguntas aleatorias del banco.
+            </div>
+
+            <div id="qArea" class="hide">
+                <div class="qhead">
+                    <div>
+                        <div class="qnum" id="qNum">#1</div>
+                        <div class="qtext" id="qText"></div>
+                        <div class="muted" style="margin-top:6px;font-size:12px;">Tema: <span id="qTopic"></span></div>
+                    </div>
+                    <div class="tag" id="qTag"></div>
+                </div>
+
+                <div class="opts" id="opts"></div>
+
+                <div class="notice">
+                    Selecciona una opción. Se registrará y pasarás a la siguiente (no podrás cambiarla).
+                </div>
+
+                <div class="notice" style="margin-top:10px;">
+                    Nota: El banco se construye a partir de los temas listados y preguntas del documento (Bloque 1).
+                    :contentReference[oaicite:0]{index=0}
+                </div>
+            </div>
+        </div>
+
+        <div class="card hide" id="resultCard">
+            <div class="title">Resultados del simulacro</div>
+            <div class="sub">Puntaje del simulacro sobre 1000: (Correctas / 40) × 1000</div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="muted">Correctas</div>
+                    <div class="big good" id="correct">0</div>
+                </div>
+                <div class="stat">
+                    <div class="muted">Incorrectas</div>
+                    <div class="big bad" id="wrong">0</div>
+                </div>
+                <div class="stat">
+                    <div class="muted">Puntaje simulacro / 1000</div>
+                    <div class="big" id="score1000">0</div>
+                </div>
+                <div class="stat">
+                    <div class="muted">Tiempo usado</div>
+                    <div class="big" id="used">0:00</div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:14px;">
+                <div class="title" style="font-size:16px;">Cálculo de nota final</div>
+                <div class="sub">Ponderación 50% colegio y 50% examen (coincide con tu ejemplo).</div>
+
+                <div class="field">
+                    <input class="input" id="school" type="number" step="0.01" min="0" max="10"
+                        placeholder="Nota final del colegio (0–10)" />
+                    <button class="btn primary" id="calcBtn">Calcular nota final</button>
+                </div>
+
+                <div class="calc" id="calcBox"></div>
+
+                <div class="notice" style="margin-top:12px;">
+                    Fórmula usada:
+                    NotaFinal = (NotaColegio/10)×500 + (PuntajeSimulacro/1000)×500
+                    (Ej: 9.35 → 467.50 y 800 → 400.00, total 867.50)
+                </div>
+            </div>
+
+            <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px;">
+                <button class="btn" id="backBtn">Volver</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="watermark">Creado por: Kelvin Z</div>
+
+    <script>
+        /*
+          IMPORTANTE:
+          - Aquí NO pegamos 200 preguntas “a mano” para no hacer el archivo gigante.
+          - En su lugar, el banco se construye con:
+            (A) un set de preguntas reales y textuales del documento (las que aparecen impresas),
+            (B) generadores de preguntas que cubren TODOS los temas listados (derivadas, vectores, rectas, sistemas, estadística, Bayes, etc.;
+                lenguaje: homonimia/polisemia/paronimia, ensayo, expositivo, cómic, falacias, etc.;
+                física: Newton, MRU/MRUV/MCU, Hooke, gravitación, Coulomb, calor, Joule, termodinámica, etc.).
+          - El banco final se arma con tamaño TARGET_BANK (ej. 240) y en cada reinicio se eligen 40 aleatorias.
+        */
+
+        /* =========================
+           CONFIG
+           ========================= */
+        const TARGET_BANK = 240;      // tamaño del banco total (puedes subirlo)
+        const EXAM_SIZE = 40;         // preguntas por simulacro
+        const BLUEPRINT = {           // distribución típica (modifícalo si quieres)
+            Matemáticas: 20,
+            Lenguaje: 12,
+            Física: 8
+        };
+
+        /* =========================
+           RNG y utilidades
+           ========================= */
+        function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+        function choice(arr) { return arr[randInt(0, arr.length - 1)]; }
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function uniqueOptions(correct, makeWrong, count = 4) {
+            const set = new Set([correct]);
+            while (set.size < count) {
+                set.add(makeWrong());
+            }
+            return shuffle([...set]);
+        }
+        function q(topic, text, options, correctIndex) {
+            return { topic, text, options, correct: correctIndex };
+        }
+
+        /* =========================
+           (A) Preguntas reales (textuales) del documento (ejemplos impresos)
+           ========================= */
+        const FIXED = [
+            // CÓMIC (aparecen como preguntas en el documento)
+            q("Lenguaje", "¿Qué es una viñeta en un cómic?", [
+                "Un tipo de globo de diálogo.",
+                "Un recuadro que representa un momento de la historia.",
+                "Un símbolo que indica movimiento.",
+                "Un recurso tipográfico."
+            ], 1),
+            q("Lenguaje", "¿Para qué se utilizan los globos o bocadillos en un cómic?", [
+                "Para mostrar solo los pensamientos de los personajes.",
+                "Para incluir el diálogo, pensamientos o narración.",
+                "Para representar el movimiento.",
+                "Para separar las viñetas."
+            ], 1),
+            q("Lenguaje", "La diglosia es:", [
+                "Una situación de bilingüismo en la que las escuelas ofrecen educación en los dos idiomas.",
+                "Una situación de bilingüismo en la que las personas manejan indistintamente las dos lenguas.",
+                "Una situación de desfase entre lo que habla una persona y lo que dice la nación.",
+                "Una situación de bilingüismo en la que una lengua es más prestigiosa que otra."
+            ], 3),
+            q("Lenguaje", "¿Qué indican las figuras cinéticas en un cómic?", [
+                "El estado de ánimo de los personajes.",
+                "La trayectoria del movimiento de personajes u objetos.",
+                "El tipo de letra utilizada.",
+                "El tamaño de las viñetas."
+            ], 1),
+            q("Lenguaje", "¿Cuál de estos es un recurso tipográfico común en cómics?", [
+                "Las onomatopeyas.",
+                "Las viñetas redondas.",
+                "Las mayúsculas y negritas para dar énfasis.",
+                "Los colores de fondo."
+            ], 2),
+            q("Lenguaje", "¿Qué representan los símbolos como estrellas o bombillas en un cómic?", [
+                "El escenario donde ocurre la acción.",
+                "El estado de ánimo e ideas de los personajes.",
+                "El nombre del autor.",
+                "La velocidad del diálogo."
+            ], 1),
+            q("Lenguaje", "¿Cómo se llama el elemento que enmarca las escenas en un cómic?", [
+                "Bocadillo.",
+                "Viñeta.",
+                "Figuras cinéticas.",
+                "Símbolo."
+            ], 1),
+            q("Lenguaje", "Si un personaje en un cómic tiene líneas curvas alrededor de su cabeza, ¿qué podría indicar?", [
+                "Que está corriendo.",
+                "Que está hablando en voz alta.",
+                "Que está sorprendido o mareado.",
+                "Que es el villano de la historia."
+            ], 2),
+            q("Lenguaje", "¿Qué función tienen las onomatopeyas en un cómic?", [
+                "Describir el escenario.",
+                "Representar sonidos de manera visual.",
+                "Indicar el tiempo entre viñetas.",
+                "Mostrar el nombre del personaje."
+            ], 1),
+
+            // Matemáticas (preguntas impresas en el documento)
+            q("Matemáticas", "El punto medio M de un segmento PQ:", [
+                "Es la suma de las coordenadas de P y Q.",
+                "Es la semisuma de las coordenadas A y B.",
+                "Tienen distintas coordenadas P y Q.",
+                "Es la semisuma de las coordenadas P y Q."
+            ], 3),
+            q("Matemáticas", "La bisectriz de un ángulo dado un ángulo cualquiera es:", [
+                "El lugar geométrico de los puntos que equidistan de las rectas que determinan el ángulo.",
+                "El lugar donde el ángulo equidistan de las rectas.",
+                "Es la distancia entre las rectas que determinan el ángulo.",
+                "Todas las afirmaciones son correctas."
+            ], 0),
+            q("Matemáticas", "Dado el punto A=(0,x), determina el valor de x de modo que la distancia de este al punto B=(5,7) sea de 13 unidades.", [
+                "5", "13", "19", "-19"
+            ], 2),
+            q("Matemáticas", "Se conoce como vector libre aquel:", [
+                "Conjunto formado por todos los vectores libres.",
+                "Conjunto formado por todos los vectores fijos equipolentes a uno dado.",
+                "Los vectores que tienen módulo, dirección y sentido.",
+                "Todas las anteriores."
+            ], 1),
+            q("Matemáticas", "En todo estudio estadístico aparecen los siguientes conceptos básicos que son:", [
+                "Población, materia, variable descriptiva.",
+                "Estudio, población, media aritmética.",
+                "Población, individuo, variable estadística.",
+                "Población, número de casos, promedio."
+            ], 2),
+            q("Matemáticas", "¿Cuál de los siguientes ejemplos corresponde a un caso de variable estadística cualitativa?", [
+                "Número de hijos.",
+                "Número de horas usando internet.",
+                "Grado de satisfacción.",
+                "Días de la semana."
+            ], 2),
+            q("Matemáticas", "¿Cuál es la condición necesaria para que el estudio estadístico sea fiable?", [
+                "Que la muestra tenga pocos individuos.",
+                "Que la muestra sea representativa del total de la población.",
+                "Que todos los individuos respondan igual.",
+                "Que se use únicamente muestreo estratificado."
+            ], 1),
+            q("Matemáticas", "Son los valores que dejan por debajo de un porcentaje determinado (k%) de datos cuando la distribución se divide en cien partes iguales. Se representan por Pk. ¿Cómo se denominan?", [
+                "Percentiles", "Cuartiles", "Deciles", "Mediana"
+            ], 0)
+        ];
+
+        /* =========================
+           (B) Generadores por tema (cubre temas listados del documento)
+           ========================= */
+
+        // ---- Matemáticas: Derivadas ----
+        function genDerivadaPolinomica() {
+            const a = randInt(2, 9);
+            const n = randInt(2, 6);
+            const text = `Halla la derivada de f(x) = ${a}x^${n}.`;
+            const correct = `${a * n}x^${n - 1}`;
+            const options = uniqueOptions(correct, () => {
+                const wa = a * randInt(1, 12);
+                const wn = Math.max(0, n - randInt(0, 2));
+                return wn === 0 ? `${wa}` : `${wa}x^${wn}`;
+            });
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+        function genDerivadaConstante() {
+            const c = randInt(-20, 20);
+            const text = `La derivada de f(x) = ${c} es:`;
+            const correct = `0`;
+            const options = shuffle([`${c}`, "1", "0", "x"]);
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+        function genDerivadaEnPunto() {
+            const a = randInt(1, 6);
+            const b = randInt(-6, 6);
+            const x0 = randInt(-3, 4);
+            // f(x)=ax^2+bx
+            const text = `Si f(x) = ${a}x^2 ${b >= 0 ? `+ ${b}x` : `- ${Math.abs(b)}x`}, entonces f'(${x0}) =`;
+            const correctVal = (2 * a * x0 + b);
+            const correct = `${correctVal}`;
+            const options = uniqueOptions(correct, () => `${correctVal + choice([-6, -4, -2, 2, 4, 6])}`);
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+        function genOptimizacionConcepto() {
+            const text = "En optimización, un punto crítico se identifica cuando:";
+            const options = [
+                "f(x)=0",
+                "f'(x)=0 o no existe",
+                "f''(x)=0 siempre",
+                "x=0"
+            ];
+            return q("Matemáticas", text, options, 1);
+        }
+
+        // ---- Matemáticas: Vectores ----
+        function genVectorSuma() {
+            const ax = randInt(-5, 6), ay = randInt(-5, 6);
+            const bx = randInt(-5, 6), by = randInt(-5, 6);
+            const cx = ax + bx, cy = ay + by;
+            const text = `Si a=(${ax},${ay}) y b=(${bx},${by}), entonces a+b =`;
+            const correct = `(${cx},${cy})`;
+            const options = uniqueOptions(correct, () => `(${cx + choice([-2, -1, 1, 2])},${cy + choice([-2, -1, 1, 2])})`);
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+        function genProductoEscalar() {
+            const ax = randInt(-4, 5), ay = randInt(-4, 5);
+            const bx = randInt(-4, 5), by = randInt(-4, 5);
+            const dot = ax * bx + ay * by;
+            const text = `Si a=(${ax},${ay}) y b=(${bx},${by}), a·b =`;
+            const correct = `${dot}`;
+            const options = uniqueOptions(correct, () => `${dot + choice([-6, -4, -2, 2, 4, 6])}`);
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+        function genPuntoMedio() {
+            const x1 = randInt(-8, 8), y1 = randInt(-8, 8);
+            const x2 = randInt(-8, 8), y2 = randInt(-8, 8);
+            const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+            // forzar enteros
+            const fx1 = x1 * 2, fy1 = y1 * 2, fx2 = x2 * 2, fy2 = y2 * 2;
+            const mxi = (fx1 + fx2) / 4, myi = (fy1 + fy2) / 4;
+            const mxInt = (fx1 + fx2) / 2 / 2, myInt = (fy1 + fy2) / 2 / 2; // simplificación
+            const text = `El punto medio entre P(${x1},${y1}) y Q(${x2},${y2}) es:`;
+            // si no es entero, lo dejamos como fracción simple
+            const correct = ((x1 + x2) % 2 === 0 && (y1 + y2) % 2 === 0)
+                ? `(${(x1 + x2) / 2},${(y1 + y2) / 2})`
+                : `(${(x1 + x2)}/2,${(y1 + y2)}/2)`;
+            const options = uniqueOptions(correct, () => {
+                const dx = choice([-1, 1, 2, -2]);
+                const dy = choice([-1, 1, 2, -2]);
+                // si es fracción, movemos numerador
+                if ((x1 + x2) % 2 !== 0 || (y1 + y2) % 2 !== 0) {
+                    return `(${(x1 + x2) + dx}/2,${(y1 + y2) + dy}/2)`;
+                }
+                return `(${(x1 + x2) / 2 + dx},${(y1 + y2) / 2 + dy})`;
+            });
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+
+        // ---- Matemáticas: Rectas / Plano ----
+        function genDistanciaPuntos() {
+            // triángulo pitagórico
+            const dx = choice([3, 4, 5, 6, 8]);
+            const dy = choice([4, 3, 12, 8, 6]);
+            const x1 = randInt(-5, 5), y1 = randInt(-5, 5);
+            const x2 = x1 + dx, y2 = y1 + dy;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const text = `Distancia entre A(${x1},${y1}) y B(${x2},${y2}) es:`;
+            const correct = dist % 1 === 0 ? `${dist}` : `${dist.toFixed(2)}`;
+            const options = uniqueOptions(correct, () => {
+                const alt = dist + choice([-3, -2, -1, 1, 2, 3]);
+                return alt <= 0 ? `${dist}` : (alt % 1 === 0 ? `${alt}` : `${alt.toFixed(2)}`);
+            });
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+        function genPerpendiculares() {
+            const text = "Dos rectas son perpendiculares si:";
+            const options = ["m1=m2", "m1·m2=-1", "m1+m2=0", "m1·m2=1"];
+            return q("Matemáticas", text, options, 1);
+        }
+        function genEcuacionRectaForma() {
+            const text = "La ecuación general de la recta es de la forma:";
+            const options = ["y=mx+b", "Ax+By+C=0", "(x-h)^2+(y-k)^2=r^2", "y^2=4px"];
+            return q("Matemáticas", text, options, 1);
+        }
+        function genMediatriz() {
+            const text = "La mediatriz de un segmento es la recta que:";
+            const options = [
+                "Pasa por un extremo y es paralela al segmento",
+                "Es perpendicular al segmento y pasa por su punto medio",
+                "Divide el segmento en tres partes iguales",
+                "Tiene la misma pendiente que el segmento"
+            ];
+            return q("Matemáticas", text, options, 1);
+        }
+
+        // ---- Matemáticas: Estadística / Probabilidad ----
+        function genTendenciaCentral() {
+            const text = "La medida de tendencia central más afectada por valores extremos es:";
+            const options = ["Mediana", "Moda", "Media", "Cuartil"];
+            return q("Matemáticas", text, options, 2);
+        }
+        function genVariableCualitativa() {
+            const text = "¿Cuál es una variable estadística cualitativa?";
+            const options = ["Número de hijos", "Horas de estudio", "Color de ojos", "Edad"];
+            return q("Matemáticas", text, options, 2);
+        }
+        function genPercentiles() {
+            const text = "Los valores Pk que dividen una distribución en 100 partes iguales se llaman:";
+            const options = ["Percentiles", "Cuartiles", "Deciles", "Moda"];
+            return q("Matemáticas", text, options, 0);
+        }
+        function genProbExp() {
+            const text = "La probabilidad experimental se define como:";
+            const options = [
+                "Basada solo en axiomas sin experimentar",
+                "Frecuencia relativa al repetir un experimento",
+                "Siempre vale 1/2",
+                "La suma de probabilidades condicionales"
+            ];
+            return q("Matemáticas", text, options, 1);
+        }
+        function genBayesConcepto() {
+            const text = "El teorema de Bayes se usa principalmente para:";
+            const options = [
+                "Actualizar probabilidades con nueva evidencia",
+                "Calcular derivadas",
+                "Encontrar pendientes de rectas",
+                "Medir distancia entre puntos"
+            ];
+            return q("Matemáticas", text, options, 0);
+        }
+
+        // ---- Matemáticas: Sistemas de ecuaciones (2 variables) ----
+        function genSistema2x2() {
+            // Generar solución entera (x,y) y construir sistema consistente
+            const x = randInt(-4, 6);
+            const y = randInt(-4, 6);
+            const a1 = choice([1, 2, 3, -1, -2]), b1 = choice([1, 2, 3, -1, -2]);
+            const a2 = choice([1, 2, 3, -1, -2]), b2 = choice([1, 2, 3, -1, -2]);
+            const c1 = a1 * x + b1 * y;
+            const c2 = a2 * x + b2 * y;
+
+            const text = `Resuelve el sistema:\n(1) ${a1}x ${b1 >= 0 ? `+ ${b1}y` : `- ${Math.abs(b1)}y`} = ${c1}\n(2) ${a2}x ${b2 >= 0 ? `+ ${b2}y` : `- ${Math.abs(b2)}y`} = ${c2}\nLa solución (x,y) es:`;
+            const correct = `(${x},${y})`;
+            const options = uniqueOptions(correct, () => `(${x + choice([-2, -1, 1, 2])},${y + choice([-2, -1, 1, 2])})`);
+            return q("Matemáticas", text, options, options.indexOf(correct));
+        }
+
+        // ---- Lenguaje: conceptos ----
+        function genHomonimia() {
+            const text = "Homonimia: palabras que:";
+            const options = [
+                "Tienen significados relacionados (polisemia)",
+                "Suenan o se escriben igual pero significan distinto",
+                "Son préstamos de otro idioma",
+                "Son siempre tecnicismos"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genPolisemia() {
+            const text = "Polisemia: una palabra que:";
+            const options = [
+                "Tiene varios significados relacionados",
+                "Tiene un solo significado",
+                "Se escribe distinto pero suena igual",
+                "No existe en el diccionario"
+            ];
+            return q("Lenguaje", text, options, 0);
+        }
+        function genParonimia() {
+            const text = "Paronimia: palabras que:";
+            const options = [
+                "Se parecen en escritura o pronunciación pero tienen significados diferentes",
+                "Se escriben igual y significan lo mismo",
+                "Son extranjerismos",
+                "Son abreviaturas"
+            ];
+            return q("Lenguaje", text, options, 0);
+        }
+        function genEnsayo() {
+            const text = "El ensayo argumentativo se caracteriza porque:";
+            const options = [
+                "No expresa postura",
+                "Tiene tesis (idea central) y argumentos",
+                "Solo narra hechos sin opinión",
+                "Es una lista de definiciones"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genExpositivo() {
+            const text = "El texto expositivo tiene como propósito principal:";
+            const options = ["Convencer", "Entretener con ficción", "Informar y explicar", "Crear suspenso"];
+            return q("Lenguaje", text, options, 2);
+        }
+        function genGeneroEpico() {
+            const text = "El género épico se relaciona con:";
+            const options = [
+                "Expresión de sentimientos del yo lírico",
+                "Narración de acciones y hechos (héroes, batallas, viajes)",
+                "Diálogo teatral",
+                "Instrucciones paso a paso"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genResumenPartes() {
+            const text = "En un resumen, lo correcto es:";
+            const options = [
+                "Copiar textualmente párrafos completos",
+                "Mantener idea principal y secundarias sin opiniones personales",
+                "Agregar información que no aparece",
+                "Cambiar el sentido del texto para hacerlo más corto"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genEntrevista() {
+            const text = "Una entrevista se caracteriza por:";
+            const options = [
+                "Ser un texto poético",
+                "Ser diálogo de preguntas y respuestas para obtener información",
+                "Ser siempre una noticia breve sin preguntas",
+                "Ser un resumen sin autor"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genNeologismosPrestamos() {
+            const text = "Neologismos, préstamos y extranjerismos se refieren a:";
+            const options = [
+                "Figuras retóricas únicamente",
+                "Formas de crear/incorporar palabras al idioma",
+                "Tipos de rima",
+                "Partes de un ensayo"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genFalacia() {
+            const text = "Una falacia es:";
+            const options = [
+                "Un dato científico comprobado",
+                "Un razonamiento incorrecto que parece correcto",
+                "Una cita bibliográfica",
+                "Una metáfora"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genDebate() {
+            const text = "En un debate, el rol principal del moderador es:";
+            const options = [
+                "Imponer su opinión",
+                "Ordenar turnos y mantener reglas/tiempos",
+                "Responder por los participantes",
+                "Cambiar el tema cada minuto"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genBlog() {
+            const text = "Un blog es:";
+            const options = [
+                "Una red social solo de videos",
+                "Un sitio o espacio web con entradas publicadas periódicamente",
+                "Un diccionario electrónico",
+                "Un documento que no se actualiza"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genPrefijosSufijos() {
+            const text = "Prefijo y sufijo:";
+            const options = [
+                "Ambos van al final",
+                "Prefijo al inicio; sufijo al final",
+                "Prefijo es una oración",
+                "Sufijo va al inicio"
+            ];
+            return q("Lenguaje", text, options, 1);
+        }
+        function genLecturaLiteral() {
+            const text = "Lectura literal es:";
+            const options = [
+                "Comprender información expresada directamente en el texto",
+                "Inventar información que no aparece",
+                "Interpretar sin base",
+                "Cambiar la idea principal por una opinión"
+            ];
+            return q("Lenguaje", text, options, 0);
+        }
+
+        // ---- Física: cubre la lista del documento (Newton, MRU/MRUV/MCU, etc.) ----
+        function genNewton1() {
+            const text = "Primera ley de Newton (inercia):";
+            const options = [
+                "F=ma",
+                "A toda acción corresponde una reacción",
+                "Si la fuerza neta es cero, mantiene reposo o MRU",
+                "La energía siempre aumenta"
+            ];
+            return q("Física", text, options, 2);
+        }
+        function genNewton2() {
+            const text = "Segunda ley de Newton:";
+            const options = ["F=ma", "v=d/t", "W=F·d", "p=m·v"];
+            return q("Física", text, options, 0);
+        }
+        function genNewton3() {
+            const text = "Tercera ley de Newton:";
+            const options = [
+                "Todo cuerpo cae igual",
+                "A toda acción corresponde una reacción igual y opuesta",
+                "La aceleración siempre es constante",
+                "La fuerza depende del área"
+            ];
+            return q("Física", text, options, 1);
+        }
+        function genMovimientoConceptos() {
+            const text = "Desplazamiento es:";
+            const options = [
+                "La distancia total recorrida",
+                "El cambio de posición (vector) entre inicio y fin",
+                "La rapidez",
+                "El tiempo total"
+            ];
+            return q("Física", text, options, 1);
+        }
+        function genVelocidadMedia() {
+            const text = "La velocidad media se define como:";
+            const options = [
+                "distancia/tiempo siempre",
+                "desplazamiento/tiempo",
+                "aceleración/tiempo",
+                "fuerza/masa"
+            ];
+            return q("Física", text, options, 1);
+        }
+        function genMRU() {
+            const text = "En MRU, se cumple que:";
+            const options = [
+                "Aceleración constante distinta de cero",
+                "Velocidad constante y aceleración cero",
+                "Velocidad variable",
+                "Trayectoria circular obligatoria"
+            ];
+            return q("Física", text, options, 1);
+        }
+        function genMRUV() {
+            const a = choice([1, 2, 3, -1, -2]);
+            const t = randInt(2, 8);
+            const v0 = randInt(0, 10);
+            const v = v0 + a * t;
+            const text = `En MRUV: si v0=${v0} m/s, a=${a} m/s² y t=${t} s, entonces v =`;
+            const correct = `${v} m/s`;
+            const options = uniqueOptions(correct, () => `${v + choice([-6, -4, -2, 2, 4, 6])} m/s`);
+            return q("Física", text, options, options.indexOf(correct));
+        }
+        function genMCU() {
+            const text = "En MCU (movimiento circular uniforme), la magnitud que se mantiene constante es:";
+            const options = ["La rapidez", "La aceleración centrípeta (siempre cero)", "El radio cambia", "El tiempo es cero"];
+            // Nota: en MCU la rapidez es constante, la aceleración centrípeta no es cero.
+            return q("Física", text, options, 0);
+        }
+        function genPeso() {
+            const m = randInt(1, 30);
+            const g = 9.8;
+            const p = (m * g).toFixed(1);
+            const text = `El peso de un cuerpo de masa ${m} kg (g≈9.8 m/s²) es aproximadamente:`;
+            const correct = `${p} N`;
+            const options = uniqueOptions(correct, () => `${(Number(p) + choice([-49, -29.4, -9.8, 9.8, 19.6, 39.2])).toFixed(1)} N`);
+            return q("Física", text, options, options.indexOf(correct));
+        }
+        function genHooke() {
+            const k = randInt(50, 300);
+            const x = (randInt(1, 12) / 100); // 0.01 a 0.12 m
+            const F = (k * x).toFixed(2);
+            const text = `Ley de Hooke: si k=${k} N/m y x=${x.toFixed(2)} m, la fuerza elástica |F| es:`;
+            const correct = `${F} N`;
+            const options = uniqueOptions(correct, () => `${(Number(F) + choice([-10, -5, -2, 2, 5, 10])).toFixed(2)} N`);
+            return q("Física", text, options, options.indexOf(correct));
+        }
+        function genCoulomb() {
+            const text = "La ley de Coulomb describe la fuerza entre:";
+            const options = ["Masas", "Cargas eléctricas", "Resortes", "Ondas sonoras"];
+            return q("Física", text, options, 1);
+        }
+        function genJouleEfecto() {
+            const text = "El efecto Joule se relaciona con:";
+            const options = [
+                "Calentamiento por corriente eléctrica en un conductor",
+                "La gravedad universal",
+                "La reflexión de la luz",
+                "La presión atmosférica"
+            ];
+            return q("Física", text, options, 0);
+        }
+        function genTermo1() {
+            const text = "Primer principio de la termodinámica se relaciona con:";
+            const options = [
+                "Conservación de energía (calor, trabajo, energía interna)",
+                "Solo entropía",
+                "Solo fuerza centrípeta",
+                "Solo refracción"
+            ];
+            return q("Física", text, options, 0);
+        }
+        function genEntropia() {
+            const text = "Entropía (idea general) se asocia con:";
+            const options = [
+                "Orden perfecto siempre creciente",
+                "Nivel de desorden/irreversibilidad de un sistema",
+                "Cantidad de masa",
+                "Voltaje eléctrico"
+            ];
+            return q("Física", text, options, 1);
+        }
+        function genTermo2() {
+            const text = "Segundo principio de la termodinámica indica que:";
+            const options = [
+                "El calor fluye espontáneamente de frío a caliente",
+                "No es posible una máquina térmica 100% eficiente",
+                "La energía se destruye",
+                "La velocidad siempre aumenta"
+            ];
+            return q("Física", text, options, 1);
+        }
+
+        /* =========================
+           Construcción del BANCO grande (>= TARGET_BANK)
+           ========================= */
+        const GEN_MATH = [
+            genDerivadaPolinomica, genDerivadaConstante, genDerivadaEnPunto, genOptimizacionConcepto,
+            genVectorSuma, genProductoEscalar, genPuntoMedio,
+            genDistanciaPuntos, genPerpendiculares, genEcuacionRectaForma, genMediatriz,
+            genTendenciaCentral, genVariableCualitativa, genPercentiles, genProbExp, genBayesConcepto,
+            genSistema2x2
+        ];
+        const GEN_LANG = [
+            genHomonimia, genPolisemia, genParonimia, genEnsayo, genExpositivo, genGeneroEpico,
+            genResumenPartes, genEntrevista, genNeologismosPrestamos, genFalacia, genDebate, genBlog,
+            genPrefijosSufijos, genLecturaLiteral
+        ];
+        const GEN_PHYS = [
+            genNewton1, genNewton2, genNewton3, genMovimientoConceptos, genVelocidadMedia,
+            genMRU, genMRUV, genMCU, genPeso, genHooke, genCoulomb, genJouleEfecto,
+            genTermo1, genEntropia, genTermo2
+        ];
+
+        function buildBank() {
+            const bank = [];
+
+            // 1) incluir todas las fijas
+            bank.push(...FIXED);
+
+            // 2) rellenar con generadores hasta TARGET_BANK
+            //   (mezclamos generadores para cubrir todos los temas)
+            const gens = shuffle([...GEN_MATH, ...GEN_LANG, ...GEN_PHYS]);
+
+            while (bank.length < TARGET_BANK) {
+                const g = choice(gens);
+                bank.push(g());
+            }
+
+            // 3) mezclar el banco final
+            shuffle(bank);
+            return bank;
+        }
+
+        /* =========================
+           Selección de 40 preguntas aleatorias desde el banco
+           - Respetando BLUEPRINT (20/12/8) para no desequilibrar.
+           ========================= */
+        function makeExamFromBank(bank) {
+            const byTopic = { Matemáticas: [], Lenguaje: [], Física: [] };
+            for (const item of bank) {
+                if (byTopic[item.topic]) byTopic[item.topic].push(item);
+            }
+            // mezclar cada tema
+            shuffle(byTopic.Matemáticas);
+            shuffle(byTopic.Lenguaje);
+            shuffle(byTopic.Física);
+
+            const exam = [];
+            for (const [t, n] of Object.entries(BLUEPRINT)) {
+                exam.push(...byTopic[t].slice(0, n));
+            }
+            // por si faltara algo (no debería), completamos al azar
+            if (exam.length < EXAM_SIZE) {
+                const rest = bank.filter(x => !exam.includes(x));
+                shuffle(rest);
+                exam.push(...rest.slice(0, EXAM_SIZE - exam.length));
+            }
+
+            // mezclar el orden final del examen
+            shuffle(exam);
+            return exam.slice(0, EXAM_SIZE);
+        }
+
+        /* =========================
+           APP (UNA POR UNA, BLOQUEO, SIN RETROCEDER)
+           ========================= */
+        const timerEl = document.getElementById("timer");
+        const progEl = document.getElementById("prog");
+        const barEl = document.getElementById("bar");
+        const startBtn = document.getElementById("startBtn");
+        const finishBtn = document.getElementById("finishBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        const hintEl = document.getElementById("hint");
+        const qArea = document.getElementById("qArea");
+        const qNum = document.getElementById("qNum");
+        const qText = document.getElementById("qText");
+        const qTopic = document.getElementById("qTopic");
+        const qTag = document.getElementById("qTag");
+        const optsEl = document.getElementById("opts");
+
+        const quizCard = document.getElementById("quizCard");
+        const resultCard = document.getElementById("resultCard");
+        const correctEl = document.getElementById("correct");
+        const wrongEl = document.getElementById("wrong");
+        const score1000El = document.getElementById("score1000");
+        const usedEl = document.getElementById("used");
+        const backBtn = document.getElementById("backBtn");
+
+        const schoolInp = document.getElementById("school");
+        const calcBtn = document.getElementById("calcBtn");
+        const calcBox = document.getElementById("calcBox");
+
+        let started = false, ended = false;
+        let idx = 0;
+        let totalTime = 60 * 60;
+        let timeLeft = totalTime;
+        let tick = null;
+
+        let BANK = [];
+        let EXAM = [];
+        let answers = new Array(EXAM_SIZE).fill(null);
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            return `${m}:${String(s).padStart(2, "0")}`;
+        }
+        function setTimer() {
+            timerEl.textContent = formatTime(timeLeft);
+            timerEl.style.color = (timeLeft <= 300) ? "var(--bad)" : "var(--accent)";
+        }
+        function updateProgress() {
+            progEl.textContent = String(idx);
+            barEl.style.width = `${Math.round((idx / EXAM_SIZE) * 100)}%`;
+        }
+
+        function renderQuestion() {
+            const q = EXAM[idx];
+            qNum.textContent = `#${idx + 1}`;
+            qText.textContent = q.text;
+            qTopic.textContent = q.topic;
+            qTag.textContent = q.topic;
+
+            optsEl.innerHTML = "";
+            q.options.forEach((opt, j) => {
+                const label = document.createElement("label");
+                label.className = "opt";
+                label.innerHTML = `<input type="radio" name="q" value="${j}" /><span>${opt}</span>`;
+
+                label.addEventListener("click", () => {
+                    if (!started || ended) return;
+                    if (answers[idx] !== null) return;
+
+                    answers[idx] = j;
+                    lockOptions();
+
+                    setTimeout(() => {
+                        idx++;
+                        updateProgress();
+                        if (idx >= EXAM_SIZE) finish(false);
+                        else renderQuestion();
+                    }, 220);
+                });
+
+                optsEl.appendChild(label);
+            });
+        }
+        function lockOptions() {
+            optsEl.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+            optsEl.querySelectorAll('.opt').forEach(l => l.classList.add("locked"));
+        }
+
+        function start() {
+            if (started || ended) return;
+            started = true;
+            startBtn.disabled = true;
+            finishBtn.disabled = false;
+
+            hintEl.textContent = "Responde. No puedes retroceder y no puedes cambiar una respuesta.";
+            qArea.classList.remove("hide");
+
+            idx = 0;
+            updateProgress();
+            renderQuestion();
+
+            tick = setInterval(() => {
+                timeLeft--;
+                if (timeLeft < 0) timeLeft = 0;
+                setTimer();
+                if (timeLeft === 0) finish(true);
+            }, 1000);
+        }
+
+        function computeScore() {
+            let correct = 0;
+            for (let i = 0; i < EXAM_SIZE; i++) {
+                if (answers[i] === EXAM[i].correct) correct++;
+            }
+            const wrong = EXAM_SIZE - correct;
+            const score1000 = Math.round((correct / EXAM_SIZE) * 1000);
+            return { correct, wrong, score1000 };
+        }
+
+        function finish(auto) {
+            if (ended) return;
+            ended = true;
+            if (tick) clearInterval(tick);
+            finishBtn.disabled = true;
+
+            const used = totalTime - timeLeft;
+            const { correct, wrong, score1000 } = computeScore();
+
+            correctEl.textContent = correct;
+            wrongEl.textContent = wrong;
+            score1000El.textContent = score1000;
+            usedEl.textContent = formatTime(used);
+
+            calcBox.textContent = "";
+            schoolInp.value = "";
+            calcBtn.disabled = false;
+
+            quizCard.classList.add("hide");
+            resultCard.classList.remove("hide");
+            resultCard.dataset.score1000 = String(score1000);
+        }
+
+        function newAttempt() {
+            BANK = buildBank();            // banco grande (temas del documento)
+            EXAM = makeExamFromBank(BANK); // 40 aleatorias
+            answers = new Array(EXAM_SIZE).fill(null);
+
+            started = false;
+            ended = false;
+            idx = 0;
+            timeLeft = totalTime;
+
+            setTimer();
+            updateProgress();
+
+            startBtn.disabled = false;
+            finishBtn.disabled = true;
+
+            hintEl.textContent = "Presiona “Iniciar” para comenzar. Cada reinicio crea un examen nuevo con 40 preguntas aleatorias.";
+            qArea.classList.add("hide");
+
+            quizCard.classList.remove("hide");
+            resultCard.classList.add("hide");
+        }
+
+        calcBtn.addEventListener("click", () => {
+            const score1000 = Number(resultCard.dataset.score1000 || "0");
+            const school = Number(schoolInp.value);
+
+            if (!Number.isFinite(school) || school < 0 || school > 10) {
+                calcBox.textContent = "Ingresa una nota válida del colegio entre 0.00 y 10.00.";
+                return;
+            }
+
+            const colegioParte = (school / 10) * 500;
+            const examenParte = (score1000 / 1000) * 500;
+            const final = colegioParte + examenParte;
+
+            const line1 = `Nota colegio: ${school.toFixed(2)} → (nota/10)×500 = (${school.toFixed(2)}/10)×500 = ${colegioParte.toFixed(2)}`;
+            const line2 = `Puntaje simulacro: ${score1000} → (puntaje/1000)×500 = (${score1000}/1000)×500 = ${examenParte.toFixed(2)}`;
+            const line3 = `NOTA FINAL = ${colegioParte.toFixed(2)} + ${examenParte.toFixed(2)} = ${final.toFixed(2)}`;
+
+            calcBox.textContent = `${line1}\n${line2}\n\n${line3}`;
+            calcBtn.disabled = true;
+        });
+
+        backBtn.addEventListener("click", () => {
+            resultCard.classList.add("hide");
+            quizCard.classList.remove("hide");
+            hintEl.textContent = "El simulacro ya terminó. Usa “Reiniciar” para un nuevo intento (40 preguntas aleatorias).";
+            qArea.classList.add("hide");
+        });
+
+        startBtn.addEventListener("click", start);
+        finishBtn.addEventListener("click", () => finish(false));
+        resetBtn.addEventListener("click", () => {
+            if (tick) clearInterval(tick);
+            newAttempt();
+        });
+
+        // Primer intento (ya con examen aleatorio armado)
+        newAttempt();
+    </script>
+</body>
+
+</html>
